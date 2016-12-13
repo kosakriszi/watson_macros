@@ -1,4 +1,11 @@
-*~
-bin
-classes
-.settings
+*.class
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+hs_err_pid*
+lib
+build
+.idea
+.gradle
+*.iml

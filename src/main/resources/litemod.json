@@ -1,0 +1,9 @@
+{
+  "name": "WatsonMacros",
+  "mcversion": "1.11",
+  "version": "0.13.0",
+  "revision": "1",
+  "author": "totemo",
+  "description": "Macro / Keybind Mod integration for Watson.",
+  "dependsOn": "macros"
+}

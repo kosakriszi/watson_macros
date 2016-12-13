@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+
+ext {
+    assert macros ==~ /^.+_for_.*$/ : "Macros version specifier was invalid"
+    modVersion = macros.split("_for_")[0]
+    mcVersion = macros.split("_for_")[1]
+}
+
+apply plugin: 'net.minecraftforge.gradle.liteloader'
+
+minecraft {
+    version = project.mcVersion
+    mappings = project.mappings
+    runDir = "run"
+}
+
+repositories {
+    maven {
+        name = 'mumfrey'
+        url = 'http://repo.mumfrey.com/content/repositories/macros'
+    }
+}
+
+dependencies {
+    deobfCompile "net.eq2online:macrosdev:$modVersion"
+    compile files("lib/mod-watson-1.11-0.13.0.134-mc1.11.deobf.jar")
+}
+
+jar {
+    baseName = archivesBaseName
+}
